@@ -1,1 +1,7 @@
 create table test_TPS (provider_number INT NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL, zip_code INT NOT NULL, county_name VARCHAR(255), unweighted_clinical_care FLOAT, weighted_clinical_care FLOAT, unweighted_patient_caregiver_experience FLOAT, weighted_patient_caregiver_experience FLOAT, unweighted_safety FLOAT, weighted_safety FLOAT, unweighted_efficiency FLOAT, weighted_efficiency FLOAT, total_performace_score FLOAT);
+
+LOAD DATA INFILE '~/CT310/hvbp_tps_11_07_2017.csv' 
+INTO TABLE test_TPS
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
