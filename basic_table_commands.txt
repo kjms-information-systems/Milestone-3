@@ -1,0 +1,1 @@
+create table test_TPS (provider_number INT NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL);
