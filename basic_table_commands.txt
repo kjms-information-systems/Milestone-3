@@ -21,3 +21,15 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
+
+
+**Commands to create a working Medicare Provider Charge table - TESTED AND WORKS**
+
+create table test_medical_provider_charge (drg_definition VARCHAR(255) NOT NULL, provider_number VARCHAR(255) NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL, zip_code VARCHAR(255) NOT NULL, hrr VARCHAR(255) NOT NULL, total_discharges VARCHAR(255) NOT NULL, average_covered_charges VARCHAR(255) NOT NULL, average_total_payments VARCHAR(255) NOT NULL, average_medicare_payments VARCHAR(255) NOT NULL);
+
+LOAD DATA LOCAL INFILE './CT310/Medicare_Provider_Charge_Inpatient_DRGALL_FY2016.csv' 
+INTO TABLE test_medical_provider_charge
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
