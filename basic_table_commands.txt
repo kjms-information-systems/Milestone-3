@@ -16,7 +16,7 @@ create table test_HCAHPS (provider_number VARCHAR(255) NOT NULL, hospital_name V
 
 
 LOAD DATA LOCAL INFILE './CT310/hvbp_hcahps_11_07_2017.csv' 
-INTO TABLE test_TPS
+INTO TABLE test_HCAHPS
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"' 
 LINES TERMINATED BY '\r\n'
