@@ -10,6 +10,7 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
 
+
 **Commands to create a working HCAHPS table - TESTED AND WORKS**
 
 create table test_HCAHPS (provider_number VARCHAR(255) NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL, zip_code VARCHAR(255) NOT NULL, county_name VARCHAR(255) NOT NULL, communication_nurses_floor VARCHAR(255) NOT NULL, communication_nurses_achievement_threshold VARCHAR(255) NOT NULL, communication_nurses_benchmark VARCHAR(255) NOT NULL, communication_nurses_baseline VARCHAR(255) NOT NULL, communication_nurses_performace VARCHAR(255) NOT NULL, communication_nurses_achievement_points VARCHAR(255) NOT NULL, communication_nurses_improvement_points VARCHAR(255) NOT NULL, communication_nurses_dimension_score VARCHAR(255) NOT NULL, communication_doctors_floor VARCHAR(255) NOT NULL, communication_doctors_achievement_threshold VARCHAR(255) NOT NULL, communication_doctors_benchmark VARCHAR(255) NOT NULL, communication_doctors_baseline VARCHAR(255) NOT NULL, communication_doctors_performace VARCHAR(255) NOT NULL, communication_doctors_achievement_points VARCHAR(255) NOT NULL, communication_doctors_improvement_points VARCHAR(255) NOT NULL, communication_doctors_dimension_score VARCHAR(255) NOT NULL, responsiveness_floor VARCHAR(255) NOT NULL, responsiveness_achievement_threshold VARCHAR(255) NOT NULL, responsiveness_benchmark VARCHAR(255) NOT NULL, responsiveness_baseline VARCHAR(255) NOT NULL, responsiveness_performace VARCHAR(255) NOT NULL, responsiveness_achievement_points VARCHAR(255) NOT NULL, responsiveness_improvement_points VARCHAR(255) NOT NULL, responsiveness_dimension_score VARCHAR(255) NOT NULL, care_transition_floor VARCHAR(255) NOT NULL, care_transition_achievement_threshold VARCHAR(255) NOT NULL, care_transition_benchmark VARCHAR(255) NOT NULL, care_transition_baseline VARCHAR(255) NOT NULL, care_transition_performace VARCHAR(255) NOT NULL, care_transition_achievement_points VARCHAR(255) NOT NULL, care_transition_improvement_points VARCHAR(255) NOT NULL, care_transition_dimension_score VARCHAR(255) NOT NULL, communication_medicine_floor VARCHAR(255) NOT NULL, communication_medicine_achievement_threshold VARCHAR(255) NOT NULL, communication_medicine_benchmark VARCHAR(255) NOT NULL, communication_medicine_baseline VARCHAR(255) NOT NULL, communication_medicine_performace VARCHAR(255) NOT NULL, communication_medicine_achievement_points VARCHAR(255) NOT NULL, communication_medicine_improvement_points VARCHAR(255) NOT NULL, communication_medicine_dimension_score VARCHAR(255) NOT NULL, cleanliness_floor VARCHAR(255) NOT NULL, cleanliness_achievement_threshold VARCHAR(255) NOT NULL, cleanliness_benchmark VARCHAR(255) NOT NULL, cleanliness_baseline VARCHAR(255) NOT NULL, cleanliness_performace VARCHAR(255) NOT NULL, cleanliness_achievement_points VARCHAR(255) NOT NULL, cleanliness_improvement_points VARCHAR(255) NOT NULL, cleanliness_dimension_score VARCHAR(255) NOT NULL, discharge_floor VARCHAR(255) NOT NULL, discharge_achievement_threshold VARCHAR(255) NOT NULL, discharge_benchmark VARCHAR(255) NOT NULL, discharge_baseline VARCHAR(255) NOT NULL, discharge_performace VARCHAR(255) NOT NULL, discharge_achievement_points VARCHAR(255) NOT NULL, discharge_improvement_points VARCHAR(255) NOT NULL, discharge_dimension_score VARCHAR(255) NOT NULL, overall_floor VARCHAR(255) NOT NULL, overall_achievement_threshold VARCHAR(255) NOT NULL, overall_benchmark VARCHAR(255) NOT NULL, overall_baseline VARCHAR(255) NOT NULL, overall_performace VARCHAR(255) NOT NULL, overall_achievement_points VARCHAR(255) NOT NULL, overall_improvement_points VARCHAR(255) NOT NULL, overall_dimension_score VARCHAR(255) NOT NULL, hcahps_base_score VARCHAR(255) NOT NULL, hcahps_consistency_score VARCHAR(255) NOT NULL);
@@ -21,6 +22,7 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
+
 
 
 **Commands to create a working Medicare Provider Charge table - TESTED AND WORKS**
@@ -35,6 +37,7 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
 
+
 **Commands to create a working Safety table - TESTED AND WORKS**
 
 create table test_safety (provider_number VARCHAR(255) NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL, zip_code VARCHAR(255) NOT NULL, county_name VARCHAR(255) NOT NULL, psi_90_achievement_threshold VARCHAR(255) NOT NULL, psi_90_benchmark VARCHAR(255) NOT NULL, psi_90_baseline_rate VARCHAR(255) NOT NULL, psi_90_performance_rate VARCHAR(255) NOT NULL, psi_90_achievement_points VARCHAR(255) NOT NULL, psi_90_improvement_points VARCHAR(255) NOT NULL, psi_90_measure_score VARCHAR(255) NOT NULL, hai_1_achievement_threshold VARCHAR(255) NOT NULL, hai_1_benchmark VARCHAR(255) NOT NULL, hai_1_baseline_rate VARCHAR(255) NOT NULL, hai_1_performance_rate VARCHAR(255) NOT NULL, hai_1_achievement_points VARCHAR(255) NOT NULL, hai_1_improvement_points VARCHAR(255) NOT NULL, hai_1_measure_score VARCHAR(255) NOT NULL, hai_2_achievement_threshold VARCHAR(255) NOT NULL, hai_2_benchmark VARCHAR(255) NOT NULL, hai_2_baseline_rate VARCHAR(255) NOT NULL, hai_2_performance_rate VARCHAR(255) NOT NULL, hai_2_achievement_points VARCHAR(255) NOT NULL, hai_2_improvement_points VARCHAR(255) NOT NULL, hai_2_measure_score VARCHAR(255) NOT NULL, combined_ssi_measure_score VARCHAR(255) NOT NULL, hai_3_achievement_threshold VARCHAR(255) NOT NULL, hai_3_benchmark VARCHAR(255) NOT NULL, hai_3_baseline_rate VARCHAR(255) NOT NULL, hai_3_performance_rate VARCHAR(255) NOT NULL, hai_3_achievement_points VARCHAR(255) NOT NULL, hai_3_improvement_points VARCHAR(255) NOT NULL, hai_3_measure_score VARCHAR(255) NOT NULL, hai_4_achievement_threshold VARCHAR(255) NOT NULL, hai_4_benchmark VARCHAR(255) NOT NULL, hai_4_baseline_rate VARCHAR(255) NOT NULL, hai_4_performance_rate VARCHAR(255) NOT NULL, hai_4_achievement_points VARCHAR(255) NOT NULL, hai_4_improvement_points VARCHAR(255) NOT NULL, hai_4_measure_score VARCHAR(255) NOT NULL, hai_5_achievement_threshold VARCHAR(255) NOT NULL, hai_5_benchmark VARCHAR(255) NOT NULL, hai_5_baseline_rate VARCHAR(255) NOT NULL, hai_5_performance_rate VARCHAR(255) NOT NULL, hai_5_achievement_points VARCHAR(255) NOT NULL, hai_5_improvement_points VARCHAR(255) NOT NULL, hai_5_measure_score VARCHAR(255) NOT NULL, hai_6_achievement_threshold VARCHAR(255) NOT NULL, hai_6_benchmark VARCHAR(255) NOT NULL, hai_6_baseline_rate VARCHAR(255) NOT NULL, hai_6_performance_rate VARCHAR(255) NOT NULL, hai_6_achievement_points VARCHAR(255) NOT NULL, hai_6_improvement_points VARCHAR(255) NOT NULL, hai_6_measure_score VARCHAR(255) NOT NULL, pc_01_achievement_threshold VARCHAR(255) NOT NULL, pc_01_benchmark VARCHAR(255) NOT NULL, pc_01_baseline_rate VARCHAR(255) NOT NULL, pc_01_performance_rate VARCHAR(255) NOT NULL, pc_01_achievement_points VARCHAR(255) NOT NULL, pc_01_improvement_points VARCHAR(255) NOT NULL, pc_01_measure_score VARCHAR(255) NOT NULL);
@@ -46,4 +49,28 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
+
+
+
+**Commands to create a working Efficiency table - TESTED AND WORKS**
+
+create table test_efficiency (provider_number VARCHAR(255) NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL, zip_code VARCHAR(255) NOT NULL, county_name VARCHAR(255) NOT NULL, mspb_1_achievement_threshold VARCHAR(255) NOT NULL, mspb_1_benchmark VARCHAR(255) NOT NULL, mspb_1_baseline_rate VARCHAR(255) NOT NULL, mspb_1_performance_rate VARCHAR(255) NOT NULL, mspb_1_achievement_points VARCHAR(255) NOT NULL, mspb_1_improvement_points VARCHAR(255) NOT NULL, mspb_1_measure_score VARCHAR(255) NOT NULL);
+LOAD DATA LOCAL INFILE './CT310/hvbp_efficiency_11_07_2017.csv' 
+INTO TABLE test_efficiency
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+
+**Commands to create a working Clinical Care table - TESTED AND WORKS**
+
+create table test_clinical_care (provider_number VARCHAR(255) NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL, zip_code VARCHAR(255) NOT NULL, county_name VARCHAR(255) NOT NULL, mort_30_ami_achievement_threshold VARCHAR(255) NOT NULL, mort_30_ami_benchmark VARCHAR(255) NOT NULL, mort_30_ami_baseline_rate VARCHAR(255) NOT NULL, mort_30_ami_performance_rate VARCHAR(255) NOT NULL, mort_30_ami_achievement_points VARCHAR(255) NOT NULL, mort_30_ami_improvement_points VARCHAR(255) NOT NULL, mort_30_ami_measure_score VARCHAR(255) NOT NULL, mort_30_hf_achievement_threshold VARCHAR(255) NOT NULL, mort_30_hf_benchmark VARCHAR(255) NOT NULL, mort_30_hf_baseline_rate VARCHAR(255) NOT NULL, mort_30_hf_performance_rate VARCHAR(255) NOT NULL, mort_30_hf_achievement_points VARCHAR(255) NOT NULL, mort_30_hf_improvement_points VARCHAR(255) NOT NULL, mort_30_hf_measure_score VARCHAR(255) NOT NULL, mort_30_pn_achievement_threshold VARCHAR(255) NOT NULL, mort_30_pn_benchmark VARCHAR(255) NOT NULL, mort_30_pn_baseline_rate VARCHAR(255) NOT NULL, mort_30_pn_performance_rate VARCHAR(255) NOT NULL, mort_30_pn_achievement_points VARCHAR(255) NOT NULL, mort_30_pn_improvement_points VARCHAR(255) NOT NULL, mort_30_pn_measure_score VARCHAR(255) NOT NULL);
+LOAD DATA LOCAL INFILE './CT310/hvbp_clinical_care_11_07_2017.csv' 
+INTO TABLE test_clinical_care
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
 
