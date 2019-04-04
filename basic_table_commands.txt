@@ -33,3 +33,17 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
+
+
+**Commands to create a working Safety table - TESTED AND WORKS**
+
+create table test_safety (provider_number VARCHAR(255) NOT NULL, hospital_name VARCHAR(255) NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, state VARCHAR(255) NOT NULL, zip_code VARCHAR(255) NOT NULL, county_name VARCHAR(255) NOT NULL, psi_90_achievement_threshold VARCHAR(255) NOT NULL, psi_90_benchmark VARCHAR(255) NOT NULL, psi_90_baseline_rate VARCHAR(255) NOT NULL, psi_90_performance_rate VARCHAR(255) NOT NULL, psi_90_achievement_points VARCHAR(255) NOT NULL, psi_90_improvement_points VARCHAR(255) NOT NULL, psi_90_measure_score VARCHAR(255) NOT NULL, hai_1_achievement_threshold VARCHAR(255) NOT NULL, hai_1_benchmark VARCHAR(255) NOT NULL, hai_1_baseline_rate VARCHAR(255) NOT NULL, hai_1_performance_rate VARCHAR(255) NOT NULL, hai_1_achievement_points VARCHAR(255) NOT NULL, hai_1_improvement_points VARCHAR(255) NOT NULL, hai_1_measure_score VARCHAR(255) NOT NULL, hai_2_achievement_threshold VARCHAR(255) NOT NULL, hai_2_benchmark VARCHAR(255) NOT NULL, hai_2_baseline_rate VARCHAR(255) NOT NULL, hai_2_performance_rate VARCHAR(255) NOT NULL, hai_2_achievement_points VARCHAR(255) NOT NULL, hai_2_improvement_points VARCHAR(255) NOT NULL, hai_2_measure_score VARCHAR(255) NOT NULL, combined_ssi_measure_score VARCHAR(255) NOT NULL, hai_3_achievement_threshold VARCHAR(255) NOT NULL, hai_3_benchmark VARCHAR(255) NOT NULL, hai_3_baseline_rate VARCHAR(255) NOT NULL, hai_3_performance_rate VARCHAR(255) NOT NULL, hai_3_achievement_points VARCHAR(255) NOT NULL, hai_3_improvement_points VARCHAR(255) NOT NULL, hai_3_measure_score VARCHAR(255) NOT NULL, hai_4_achievement_threshold VARCHAR(255) NOT NULL, hai_4_benchmark VARCHAR(255) NOT NULL, hai_4_baseline_rate VARCHAR(255) NOT NULL, hai_4_performance_rate VARCHAR(255) NOT NULL, hai_4_achievement_points VARCHAR(255) NOT NULL, hai_4_improvement_points VARCHAR(255) NOT NULL, hai_4_measure_score VARCHAR(255) NOT NULL, hai_5_achievement_threshold VARCHAR(255) NOT NULL, hai_5_benchmark VARCHAR(255) NOT NULL, hai_5_baseline_rate VARCHAR(255) NOT NULL, hai_5_performance_rate VARCHAR(255) NOT NULL, hai_5_achievement_points VARCHAR(255) NOT NULL, hai_5_improvement_points VARCHAR(255) NOT NULL, hai_5_measure_score VARCHAR(255) NOT NULL, hai_6_achievement_threshold VARCHAR(255) NOT NULL, hai_6_benchmark VARCHAR(255) NOT NULL, hai_6_baseline_rate VARCHAR(255) NOT NULL, hai_6_performance_rate VARCHAR(255) NOT NULL, hai_6_achievement_points VARCHAR(255) NOT NULL, hai_6_improvement_points VARCHAR(255) NOT NULL, hai_6_measure_score VARCHAR(255) NOT NULL, pc_01_achievement_threshold VARCHAR(255) NOT NULL, pc_01_benchmark VARCHAR(255) NOT NULL, pc_01_baseline_rate VARCHAR(255) NOT NULL, pc_01_performance_rate VARCHAR(255) NOT NULL, pc_01_achievement_points VARCHAR(255) NOT NULL, pc_01_improvement_points VARCHAR(255) NOT NULL, pc_01_measure_score VARCHAR(255) NOT NULL);
+
+
+LOAD DATA LOCAL INFILE './CT310/hvbp_safety_11_07_2017.csv' 
+INTO TABLE test_safety
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
