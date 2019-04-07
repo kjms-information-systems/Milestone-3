@@ -1,0 +1,3 @@
+**Selects row of data by provider number**
+
+select * from test_TPS where provider_number = '060034';
