@@ -5,7 +5,7 @@
 //View for VBP modeling. Controls what the page looks like
 echo Form::open(array('action' => '/m3/vbp_modeling', 'method' => 'post')); 
     ?>
-<?php echo implode(',', $test[0]);?>
+
 
 <h2>Reimbursement</h2>
                     <table border="1">
