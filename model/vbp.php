@@ -2,13 +2,14 @@
 namespace Model;
 class Vbp extends \Model {
 	public static function get_data($filename) {
+        $provider_number = '060034';
 		//change $filename parameter to the provider_number
-		$query = \DB::select('*')->from('test_TPS')->where('provider_number', '=', '060034')->execute();
+		$safety = \DB::select('*')->from('test_safety')->where('provider_number', '=', $provider_number)->execute();
 		
-		$result_array = array();
-		$result_array = $query->as_array();
+		$safety_array = array();
+		$safety_array = $safety->as_array();
 		
-		$temp = $result_array[0]['provider_number'];
+		
 		
 		$csv = array();
 		$file = fopen($filename, "r");
@@ -16,7 +17,9 @@ class Vbp extends \Model {
 		//have these fgetcsvs to [$result_array[0]['provider_num'], $result_array[0]['...'],...]
 		//use same format for arr data
 		
-		$csv['psi90'] = [$result_array[0]['provider_num'], $result_array[0]['...'],...]
+		$csv['psi90'] = [$safety_array[0]['psi_90_achievement_threshold'], $safety_array[0]['psi_90_benchmark'],$safety_array[0]['psi_90_baseline_rate'],$safety_array[0]['psi_90_performance_rate'],$safety_array[0]['psi_90_achievement_points'],$safety_array[0]['psi_90_improvement_points'],$safety_array[0]['psi_90_measure_score']] ;
+		
+		$csv['test'] = fgetcsv($file, 1000, ",");
 		$csv['ha1'] = fgetcsv($file, 1000, ",");
 		$csv['ha2'] = fgetcsv($file, 1000, ",");
 		$csv['ha3'] = fgetcsv($file, 1000, ",");
@@ -43,7 +46,7 @@ class Vbp extends \Model {
 		$csv['tps'] = fgetcsv($file, 1000, ",");
 		$csv['reimbursement'] = fgetcsv($file, 1000, ",");
 		$csv['comments'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = $result_array;
+
 		return $csv;
 	}
 	/*
