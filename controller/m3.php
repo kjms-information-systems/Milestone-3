@@ -165,6 +165,7 @@ public function action_vbp_modeling() {
 		if($p_mortAMI != null){
             $data['mortAMI'][3] = $p_mortAMI;
 		}
+
 		$data['mortAMI'] = Vbp::calculate($data['mortAMI'][0], $data['mortAMI'][1], $data['mortAMI'][2], $data['mortAMI'][3]);
 		
 		//Calculating mortHF
