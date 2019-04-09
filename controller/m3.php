@@ -147,7 +147,7 @@ public function action_vbp_modeling() {
 		
 		//Calculating TPS scores for Safety
 		
-		$safety_tps = [$data['psi90'][6], $data['ha1'][6], $data['ha2'][6], $data['ha3'][6], $data['ha4'][6], $data['ha5'][6], $data['ha6'][6], $data['pc01'][6], $data['pc01'][4]];
+		$safety_tps = [$data['psi90'][6], $data['ha1'][6], $data['ha2'][6], $data['ha3'][6], $data['ha4'][6], $data['ha5'][6], $data['ha6'][6], $data['pc01'][6], $data['combined_ssi'][0]];
 		// $data['safety_tps'][8]
 		
 		$data['safety_tps'] = Vbp::tps_domain($safety_tps);
