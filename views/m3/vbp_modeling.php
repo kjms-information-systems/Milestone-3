@@ -330,7 +330,7 @@ echo Form::open(array('action' => '/m3/vbp_modeling', 'method' => 'post'));
                         <table border="1">
                         <tr>
                             <td id="category">Combined SSI Score</td>
-                            <td>2 out of 10</td>
+                            <td><?php echo $combined_ssi[0];?></td>
                         </tr>
                     </table>
     
