@@ -7,6 +7,8 @@ class Vbp extends \Model {
 		$safety = \DB::select('*')->from('test_safety')->where('provider_number', '=', $provider_number)->execute();
 		$tps = \DB::select('*')->from('test_TPS')->where('provider_number', '=', $provider_number)->execute();
 		$clinical_care = \DB::select('*')->from('test_clinical_care')->where('provider_number', '=', $provider_number)->execute();
+		$reimbursement = \DB::select('*')->from('test_medical_provider_charge')->where('provider_number', '=', $provider_number)->execute();
+		
 		
 		$safety_array = array();
 		$safety_array = $safety->as_array();
@@ -16,6 +18,11 @@ class Vbp extends \Model {
 		
 		$clinical_care_array = array();
 		$clinical_care_array = $clinical_care->as_array();
+		
+		$reimbursement_array = array();
+		$reimbursement_array = $reimbursement->as_array();
+		
+		
 		
 		$csv = array();
 		$file = fopen($filename, "r");
@@ -80,7 +87,24 @@ class Vbp extends \Model {
 		$csv['overall'] = fgetcsv($file, 1000, ",");
 		$csv['hcahps_tps'] = fgetcsv($file, 1000, ",");
 		$csv['tps'] = fgetcsv($file, 1000, ",");
-		$csv['reimbursement'] = fgetcsv($file, 1000, ",");
+		
+		//Calculate reimbursement
+		$reim = 0;
+		for ($i = 0; $i < sizeof($reimbursement_array); $i++){
+			$temp = $reimbursement_array[$i]['average_medicare_payments'];
+			$temp = str_replace("$", "", $temp);
+			$temp = str_replace(",", "", $temp);
+			$temp = doubleval($temp);
+			$temp2 = $reimbursement_array[$i]['total_discharges'] * $temp;
+			$reim = $reim + $temp2;
+		}
+		$penalty = $reim * 0.02;
+		$money_back = ($tps['total_performance_score'] / 100) * $penalty;
+		$total_reimbursement = $reim - $penalty + $money_back;
+		
+		$csv['reimbursement'] = [$reim, $penalty, $total_reimbursement];
+		
+		$csv['test'] = fgetcsv($file, 1000, ",");
 		$csv['comments'] = fgetcsv($file, 1000, ",");
 
 		return $csv;
