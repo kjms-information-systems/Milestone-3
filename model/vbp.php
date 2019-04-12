@@ -22,8 +22,6 @@ class Vbp extends \Model {
 		$reimbursement_array = array();
 		$reimbursement_array = $reimbursement->as_array();
 		
-		
-		
 		$csv = array();
 		$file = fopen($filename, "r");
 		
@@ -58,7 +56,7 @@ class Vbp extends \Model {
 		
 		$csv['cc_tps'] = [$tps_array[0]['unweighted_clinical_care'], $tps_array[0]['unweighted_clinical_care'], $tps_array[0]['weighted_clinical_care']];
 		
-		
+		$csv['hospital_name'] = [$tps_array[0]['hospital_name']];
 		$csv['test'] = fgetcsv($file, 1000, ",");
 		$csv['test'] = fgetcsv($file, 1000, ",");
 		$csv['test'] = fgetcsv($file, 1000, ",");
@@ -109,15 +107,17 @@ class Vbp extends \Model {
 
 		return $csv;
 	}
-	/*
-	public static function put_data($filename, $arr) {
-		$myfile = fopen($filename, "w");
-		foreach ($arr as $row){
-			fputcsv($myfile, $row);
-		}
-		fclose($myfile);
+	
+	public static function put_data($filename, $data) {
+                  
+                
+		\DB::insert('test_user_save_data')->set(array(
+            'filename' => $filename,
+            'reimbursement' => $data['reimbursement'][0],
+            ))->execute();
+            
 	}
-	*/
+	
 	
 	public static function calculate($achievement, $benchmark, $baseline, $performance){
         $achievement_points = round(9 * (($performance - $achievement)/($benchmark - $achievement)) + 0.5);
