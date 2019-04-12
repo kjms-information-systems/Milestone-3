@@ -18,6 +18,7 @@
             <a href='<?php echo Uri::create('index.php/m3/about'); ?>'>About Us</a>
             <a href='<?php echo Uri::create('index.php/m3/moreinformation'); ?>'>Info</a>
             <a href='<?php echo Uri::create('index.php/m3/vbp_modeling'); ?>'>VBP Modeling</a>
+	    <a href=<?php echo Uri::create('index.php/m3/login'); ?>>Login</a>
         </ul>
     </div>
 	</header>
