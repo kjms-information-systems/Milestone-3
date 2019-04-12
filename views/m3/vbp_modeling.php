@@ -364,6 +364,9 @@ echo Form::open(array('action' => 'index.php/m3/vbp_modeling', 'method' => 'post
 	echo Form::button('frmbutton', 'Calculate VBP', array('class' => 'btn btn-default'));
 	echo '<br><br>';
 	?>
+<?php
+    if (Auth::check())
+		{?>	
 
 <h2>Comments</h2>
                     <table border="1">
@@ -412,5 +415,5 @@ $load_name = Form::select('files', 'none', $files);
 	echo Form::button('test', 'Load File', array('class' => 'btn btn-default'));
 
 	echo '<br><br>';
-
+}
 echo Form::close();
