@@ -5,6 +5,16 @@
 //View for VBP modeling. Controls what the page looks like
 echo Form::open(array('action' => 'index.php/m3/vbp_modeling', 'method' => 'post')); 
     ?>
+<h2>Choose Hospital</h2>
+<?php
+$prov_nums_array = array();
+$prov_nums = \DB::select('provider_number')->from('test_safety')->execute();
+$prov_nums_array = $prov_nums->as_array();
+echo Form::select('provider_num', 'none', $prov_nums_array);
+$prov_num = Form::select('provider_number', 'none', $prov_nums_array);
+echo '<br><br>';
+echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn btn-default'));
+    ?>	
 
     <?php echo $hospital_name[0] ?>
 
