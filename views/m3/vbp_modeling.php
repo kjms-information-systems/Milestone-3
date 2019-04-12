@@ -142,7 +142,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                     
                         <tr>
                             <td id="category">Communication with Nurses</td>
-                            <td>55.27</td>
+                            <td><?php echo $hcahps_floor_data[0];?></td>
                             <td><?php echo $nurses[0];?></td>
                             <td><?php echo $nurses[1];?></td>
                             <td><?php echo Form::input('b_nurses', $nurses[2], array('class' => 'form-control'));?></td>
@@ -153,7 +153,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">Communication with Doctors</td>
-                            <td>57.39</td>
+                            <td><?php echo $hcahps_floor_data[1];?></td>
                             <td><?php echo $doctors[0];?></td>
                             <td><?php echo $doctors[1];?></td>
                             <td><?php echo Form::input('b_doctors', $doctors[2], array('class' => 'form-control'));?></td>
@@ -164,7 +164,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">Responsiveness of Hospital Staff</td>
-                            <td>38.40</td>
+                            <td><?php echo $hcahps_floor_data[2];?></td>
                             <td><?php echo $staff[0];?></td>
                             <td><?php echo $staff[1];?></td>
                             <td><?php echo Form::input('b_staff', $staff[2], array('class' => 'form-control'));?></td>
@@ -175,7 +175,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">Care Transition</td>
-                            <td>25.21</td>
+                            <td><?php echo $hcahps_floor_data[3];?></td>
                             <td><?php echo $care[0];?></td>
                             <td><?php echo $care[1];?></td>
                             <td><?php echo Form::input('b_care', $care[2], array('class' => 'form-control'));?></td>
@@ -186,7 +186,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">Communication about Medicines</td>
-                            <td>43.43</td>
+                            <td><?php echo $hcahps_floor_data[4];?></td>
                             <td><?php echo $medicine[0];?></td>
                             <td><?php echo $medicine[1];?></td>
                             <td><?php echo Form::input('b_medicine', $medicine[2], array('class' => 'form-control'));?></td>
@@ -197,7 +197,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">Cleanliness and Quietness of Hospital Environment</td>
-                            <td>40.05</td>
+                            <td><?php echo $hcahps_floor_data[5];?></td>
                             <td><?php echo $cleanliness[0];?></td>
                             <td><?php echo $cleanliness[1];?></td>
                             <td><?php echo Form::input('b_cleanliness', $cleanliness[2], array('class' => 'form-control'));?></td>
@@ -208,7 +208,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">Discharge Information</td>
-                            <td>62.25</td>
+                            <td><?php echo $hcahps_floor_data[6];?></td>
                             <td><?php echo $discharge[0];?></td>
                             <td><?php echo $discharge[1];?></td>
                             <td><?php echo Form::input('b_discharge', $discharge[2], array('class' => 'form-control'));?></td>
@@ -219,7 +219,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">Overall Rating of Hospital</td>
-                            <td>37.67</td>
+                            <td><?php echo $hcahps_floor_data[7];?></td>
                             <td><?php echo $overall[0];?></td>
                             <td><?php echo $overall[1];?></td>
                             <td><?php echo Form::input('b_overall', $overall[2], array('class' => 'form-control'));?></td>
