@@ -386,7 +386,7 @@ public function action_vbp_modeling() {
         $contents = File::read_dir(DOCROOT, 0, array(
                 '\.csv$' => 'file', // or css files
         ));
-    	if ( ! Auth::check())
+    	if ( Auth::check())
 	{
        		 //Saving files
         	$load_name = Security::strip_tags(Input::post('load_name'));
