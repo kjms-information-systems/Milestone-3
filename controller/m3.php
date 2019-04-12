@@ -24,7 +24,45 @@ class Controller_M3 extends Controller_Template {
 	public function action_bg() {
 	}
 	
-	
+	public function action_register() {
+        $data = array();
+		$this->template->title = 'KJMS';
+		$this->template->subtitle = 'Register';
+		$this->template->content = View::forge('m3/register', $data);
+	}
+	public function post_register() {
+		$data = array();
+		$username = Input::post('username');
+		$pass = Input::post('password');
+		$email = Input::post('email');
+		$fullname = Input::post('fullname');
+		$id = Auth::create_user($username,$pass,$email,5, array( 'fullname' => $fullname));
+		Response::redirect_back('');
+	}
+	public function action_login() {
+        $data = array();
+		// Input from post?
+		if (Input::post()) {
+			
+			// get the username & password
+			$username = Input::post('username');
+			$password_hash = Input::post('password');
+		
+			// Check the credentials
+			if( Auth::login($username, $password_hash) ) {
+				// redirect if successful
+				$data['login_error'] = "Successful!";
+    	    }
+        	else {
+				// add an error to the page
+				$data['login_error'] = 'Wrong username/password combo. Try again';
+			}
+    	}
+    	// then show regular login page
+		$this->template->title = 'KJMS';
+		$this->template->subtitle = 'Login';
+		$this->template->content = View::forge('m3/login', $data);
+	}
 	
 // FORM EXAMPLE -------------------------------------------
 	public function action_list() {
@@ -32,6 +70,10 @@ class Controller_M3 extends Controller_Template {
 // --------------------------------------------------------
 //VBP Modeling
 public function action_vbp_modeling() {
+	if ( ! Auth::check())
+	{
+		Response::redirect('index.php/m3/login');
+	}
 		$data = array();
 		$this->template->title = 'KJMS';
 		$this->template->subtitle = 'VBP Model';
