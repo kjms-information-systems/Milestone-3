@@ -70,10 +70,6 @@ class Controller_M3 extends Controller_Template {
 // --------------------------------------------------------
 //VBP Modeling
 public function action_vbp_modeling() {
-	if ( ! Auth::check())
-	{
-		Response::redirect('index.php/m3/login');
-	}
 		$data = array();
 		$this->template->title = 'KJMS';
 		$this->template->subtitle = 'VBP Model';
@@ -390,11 +386,12 @@ public function action_vbp_modeling() {
         $contents = File::read_dir(DOCROOT, 0, array(
                 '\.csv$' => 'file', // or css files
         ));
-    
-        //Saving files
-        $load_name = Security::strip_tags(Input::post('load_name'));
+    	if ( ! Auth::check())
+	{
+       		 //Saving files
+        	$load_name = Security::strip_tags(Input::post('load_name'));
         
-		//Vbp::put_data("$test.csv", $data);
+	}
 
 		
 		
