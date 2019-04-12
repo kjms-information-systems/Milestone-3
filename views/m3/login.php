@@ -17,5 +17,4 @@ echo Form::open(array('action' => 'index/m3/login', 'method' => 'post'));
 echo Form::close();
 ?>
 
-
-
+<p><small><a href=<?php echo Uri::create('index.php/m3/register');?>>Register</a> now for free information.</small></p>
