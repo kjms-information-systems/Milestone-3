@@ -6,6 +6,7 @@
 echo Form::open(array('action' => 'index.php/m3/vbp_modeling', 'method' => 'post')); 
     ?>
 
+    <?php echo $hospital_name[0] ?>
 
 <h2>Reimbursement</h2>
                     <table border="1">
@@ -359,7 +360,6 @@ echo Form::open(array('action' => 'index.php/m3/vbp_modeling', 'method' => 'post
 </table>
 
  <?php
-
 	echo '<br><br>';
 	echo Form::button('frmbutton', 'Calculate VBP', array('class' => 'btn btn-default'));
 	echo '<br><br>';
@@ -403,7 +403,6 @@ echo Form::open(array('action' => 'index.php/m3/vbp_modeling', 'method' => 'post
 	$csvs = File::read_dir(DOCROOT, 1, array(
                 '\.csv$' => 'file', // or css files
         ));
-
         $files = array();
         for ($i = 1; $i < count($csvs) - 1; $i++){
             array_push($files, $csvs[$i]);
@@ -411,9 +410,7 @@ echo Form::open(array('action' => 'index.php/m3/vbp_modeling', 'method' => 'post
         
 echo Form::select('files', 'none', $files);
 $load_name = Form::select('files', 'none', $files);
-
 	echo Form::button('test', 'Load File', array('class' => 'btn btn-default'));
-
 	echo '<br><br>';
 }
 echo Form::close();
