@@ -64,6 +64,21 @@ class Controller_M3 extends Controller_Template {
 		$this->template->content = View::forge('m3/login', $data);
 	}
 	
+	public function action_logout() {
+		$data = array();
+		$this->template->title = 'Logout';
+
+		if( Auth::check() ) {
+			Auth::logout();
+			$this->template->subtitle = 'Logged out successfully';
+		}
+		else {
+			$this->template->subtitle = 'You must be logged in to log out';
+		}
+		$this->template->content = View::forge('m3/logout', $data);
+
+	}
+	
 // FORM EXAMPLE -------------------------------------------
 	public function action_list() {
 	}
