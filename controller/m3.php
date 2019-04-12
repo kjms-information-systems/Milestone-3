@@ -406,6 +406,15 @@ public function action_vbp_modeling() {
        		 //Saving files
         	$load_name = Security::strip_tags(Input::post('load_name'));
         
+		//Vbp::put_data("$test.csv", $data);
+		
+		 $save_name = Security::strip_tags(Input::post('fs'));
+        	if ($save_name == null){
+            
+        	}else{
+     
+            		Vbp::put_data($save_name, $data);
+        	}
 	}
 
 		
