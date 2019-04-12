@@ -74,3 +74,11 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
 
+
+**Commands to create a working User Saved Data table - WORK IN PROGRESS**
+
+create table test_user_saved_data (username VARCHAR(255) NOT NULL, table_name VARCHAR(255) NOT NULL, provider_number VARCHAR(255) NOT NULL, 
+
+
+
+
