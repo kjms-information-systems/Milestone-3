@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 class Vbp extends \Model {
-	public static function get_data($filename) {
+	public static function get_data($filename, $username) {
         $provider_number = '060034';
 		//change $filename parameter to the provider_number
 		$safety = \DB::select('*')->from('test_safety')->where('provider_number', '=', $provider_number)->execute();
@@ -99,6 +99,8 @@ class Vbp extends \Model {
 		
 		$csv['hcahps_floor_data'] = [$hcahps[0]['communication_nurses_floor'], $hcahps[0]['communication_doctors_floor'], $hcahps[0]['responsiveness_floor'], $hcahps[0]['care_transition_floor'], $hcahps[0]['communication_medicine_floor'], $hcahps[0]['cleanliness_floor'], $hcahps[0]['discharge_floor'], $hcahps[0]['overall_floor']];
 		
+		$csv['username'] = [$username];
+		
 		//Calculate reimbursement
 		$reim = 0;
 		for ($i = 0; $i < sizeof($reimbursement_array); $i++){
@@ -119,10 +121,9 @@ class Vbp extends \Model {
 	}
 	
 	public static function put_data($filename, $data) {
-                  
-                
+            
 		\DB::insert('test_user_saved_data')->set(array(
-            'username' => 'TODO',
+            'username' => $data['username'][0],
             'filename' => $filename,
             'provider_number' => $data['provider_number'][0],
             'hospital_name'=> $data['hospital_name'][0],
