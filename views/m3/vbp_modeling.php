@@ -237,7 +237,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
                         </tr>
                         <tr>
                             <td id="category">HCAHPS Consistency Score</td>
-                            <td>15</td>
+                            <td><?php echo $hcahps_consistency[0];?></td>
                         </tr>
                     </table>
 
