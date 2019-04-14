@@ -2,7 +2,7 @@
 namespace Model;
 class Vbp extends \Model {
 	public static function get_data($filename) {
-        $provider_number = '060034';
+        $provider_number = '060010';
 		//change $filename parameter to the provider_number
 		$safety = \DB::select('*')->from('test_safety')->where('provider_number', '=', $provider_number)->execute();
 		$tps = \DB::select('*')->from('test_TPS')->where('provider_number', '=', $provider_number)->execute();
@@ -300,24 +300,38 @@ class Vbp extends \Model {
 	
 	
 	public static function calculate($achievement, $benchmark, $baseline, $performance){
-        $achievement_points = round(9 * (($performance - $achievement)/($benchmark - $achievement)) + 0.5);
+	
+        if ($benchmark - $achievement == 0){
         
-        if ($achievement_points >= 10){
-            $achievement_points = 10;
-        }
-        
-        if ($achievement_points <= 0){
             $achievement_points = 0;
         }
+        else {
+            $achievement_points = round(9 * (($performance - $achievement)/($benchmark - $achievement)) + 0.5);
         
-        $improvement_points = round(10 * (($performance - $baseline)/($benchmark - $baseline)) - 0.5);
+            if ($achievement_points >= 10){
+                $achievement_points = 10;
+            }
         
-        if ($improvement_points >= 9){
-            $improvement_points = 9;
+            if ($achievement_points <= 0){
+                $achievement_points = 0;
+            }
         }
         
-        if ($improvement_points <= 0){
+        if ($benchmark - $baseline == 0){
             $improvement_points = 0;
+        
+        }
+        else {
+        
+            $improvement_points = round(10 * (($performance - $baseline)/($benchmark - $baseline)) - 0.5);
+        
+            if ($improvement_points >= 9){
+                $improvement_points = 9;
+            }
+        
+            if ($improvement_points <= 0){
+                $improvement_points = 0;
+            }
         }
         
         if ($achievement_points >= $improvement_points){
