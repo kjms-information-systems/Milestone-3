@@ -89,9 +89,14 @@ public function action_vbp_modeling() {
 		$this->template->title = 'KJMS';
 		$this->template->subtitle = 'VBP Model';
 		
-	//change filename to provider number
-        $data = Vbp::get_data("test.csv");
+		$id_info = Auth::get_user_id();
+        $username = ['test'];
+        
+        $username = Auth::get_screen_name();
+
 		
+		//change filename to provider number
+        $data = Vbp::get_data("test.csv", $username);
 		
 		
 		//SAFETY DOMAIN
@@ -409,6 +414,7 @@ public function action_vbp_modeling() {
 		//Vbp::put_data("$test.csv", $data);
 		
 		 $save_name = Security::strip_tags(Input::post('fs'));
+		 
         	if ($save_name == null){
             
         	}else{
