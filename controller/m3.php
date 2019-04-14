@@ -95,8 +95,12 @@ public function action_vbp_modeling() {
         $username = Auth::get_screen_name();
 
 		
-		//change filename to provider number
-        $data = Vbp::get_data("test.csv", $username);
+	$prov = Security::strip_tags(Input::post('pNum'));
+		if($prov == null){
+			$prov = '060034';
+		}
+		
+        $data = Vbp::get_data($prov, $username);
 		
 		
 		//SAFETY DOMAIN
