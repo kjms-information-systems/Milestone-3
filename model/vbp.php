@@ -2,7 +2,7 @@
 namespace Model;
 class Vbp extends \Model {
 	public static function get_data($filename, $username) {
-        $provider_number = '060034';
+        	$provider_number = $filename;
 		//change $filename parameter to the provider_number
 		$safety = \DB::select('*')->from('test_safety')->where('provider_number', '=', $provider_number)->execute();
 		$tps = \DB::select('*')->from('test_TPS')->where('provider_number', '=', $provider_number)->execute();
