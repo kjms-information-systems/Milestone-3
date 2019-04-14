@@ -2,13 +2,14 @@
 namespace Model;
 class Vbp extends \Model {
 	public static function get_data($filename) {
-        $provider_number = '060010';
+        $provider_number = '060034';
 		//change $filename parameter to the provider_number
 		$safety = \DB::select('*')->from('test_safety')->where('provider_number', '=', $provider_number)->execute();
 		$tps = \DB::select('*')->from('test_TPS')->where('provider_number', '=', $provider_number)->execute();
 		$clinical_care = \DB::select('*')->from('test_clinical_care')->where('provider_number', '=', $provider_number)->execute();
 		$reimbursement = \DB::select('*')->from('test_medical_provider_charge')->where('provider_number', '=', $provider_number)->execute();
 		$hcahps = \DB::select('*')->from('test_HCAHPS')->where('provider_number', '=', $provider_number)->execute();
+		$efficiency = \DB::select('*')->from('test_efficiency')->where('provider_number', '=', $provider_number)->execute();
 		
 		//Fix with current user
 		//$user = \DB::select('*')->from('users')->where('provider_number', '=', $provider_number)->execute();
@@ -28,11 +29,13 @@ class Vbp extends \Model {
 		$hcahps_array = array();
 		$hcahps_array = $hcahps->as_array();
 		
+		$efficiency_array = array();
+		$efficiency_array = $efficiency->as_array();
+		
 		//$user_array = array();
 		//$user_array = $user->as_array();
 		
 		$csv = array();
-		$file = fopen($filename, "r");
 		
 		//SAFETY
 		$csv['psi90'] = [$safety_array[0]['psi_90_achievement_threshold'], $safety_array[0]['psi_90_benchmark'],$safety_array[0]['psi_90_baseline_rate'],$safety_array[0]['psi_90_performance_rate'],$safety_array[0]['psi_90_achievement_points'],$safety_array[0]['psi_90_improvement_points'],$safety_array[0]['psi_90_measure_score']] ;
@@ -68,34 +71,31 @@ class Vbp extends \Model {
 		$csv['hospital_name'] = [$tps_array[0]['hospital_name']];
 		$csv['provider_number'] = [$provider_number]; 
 		
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['test'] = fgetcsv($file, 1000, ",");
+		$csv['MSPB'] = [$efficiency_array[0]['mspb_1_achievement_threshold'], $efficiency_array[0]['mspb_1_benchmark'],$efficiency_array[0]['mspb_1_baseline_rate'],$efficiency_array[0]['mspb_1_performance_rate'],$efficiency_array[0]['mspb_1_achievement_points'],$efficiency_array[0]['mspb_1_improvement_points'],$efficiency_array[0]['mspb_1_measure_score']];
 		
+		$csv['efficiency_tps'] = $csv['efficiency_tps'] = [$tps_array[0]['unweighted_efficiency'], $tps_array[0]['unweighted_efficiency'], $tps_array[0]['weighted_efficiency']];
 		
+		$csv['nurses'] = [$hcahps_array[0]['communication_nurses_achievement_threshold'], $hcahps_array[0]['communication_nurses_benchmark'],$hcahps_array[0]['communication_nurses_baseline'],$hcahps_array[0]['communication_nurses_performace'],$hcahps_array[0]['communication_nurses_achievement_points'],$hcahps_array[0]['communication_nurses_improvement_points'],$hcahps_array[0]['communication_nurses_dimension_score']];
 		
-		$csv['MSPB'] = fgetcsv($file, 1000, ",");
-		$csv['efficiency_tps'] = fgetcsv($file, 1000, ",");
-		$csv['nurses'] = fgetcsv($file, 1000, ",");
-		$csv['doctors'] = fgetcsv($file, 1000, ",");
-		$csv['staff'] = fgetcsv($file, 1000, ",");
-		$csv['care'] = fgetcsv($file, 1000, ",");
-		$csv['medicine'] = fgetcsv($file, 1000, ",");
-		$csv['cleanliness'] = fgetcsv($file, 1000, ",");
-		$csv['discharge'] = fgetcsv($file, 1000, ",");
-		$csv['overall'] = fgetcsv($file, 1000, ",");
-		$csv['hcahps_tps'] = fgetcsv($file, 1000, ",");
-		$csv['tps'] = fgetcsv($file, 1000, ",");
+		$csv['doctors'] = [$hcahps_array[0]['communication_doctors_achievement_threshold'], $hcahps_array[0]['communication_doctors_benchmark'],$hcahps_array[0]['communication_doctors_baseline'],$hcahps_array[0]['communication_doctors_performace'],$hcahps_array[0]['communication_doctors_achievement_points'],$hcahps_array[0]['communication_doctors_improvement_points'],$hcahps_array[0]['communication_doctors_dimension_score']];
+		
+		$csv['staff'] = [$hcahps_array[0]['responsiveness_achievement_threshold'], $hcahps_array[0]['responsiveness_benchmark'],$hcahps_array[0]['responsiveness_baseline'],$hcahps_array[0]['responsiveness_performace'],$hcahps_array[0]['responsiveness_achievement_points'],$hcahps_array[0]['responsiveness_improvement_points'],$hcahps_array[0]['responsiveness_dimension_score']];
+		
+		$csv['care'] = [$hcahps_array[0]['care_transition_achievement_threshold'], $hcahps_array[0]['care_transition_benchmark'],$hcahps_array[0]['care_transition_baseline'],$hcahps_array[0]['care_transition_performace'],$hcahps_array[0]['care_transition_achievement_points'],$hcahps_array[0]['care_transition_improvement_points'],$hcahps_array[0]['care_transition_dimension_score']];
+		
+		$csv['medicine'] = [$hcahps_array[0]['communication_medicine_achievement_threshold'], $hcahps_array[0]['communication_medicine_benchmark'],$hcahps_array[0]['communication_medicine_baseline'],$hcahps_array[0]['communication_medicine_performace'],$hcahps_array[0]['communication_medicine_achievement_points'],$hcahps_array[0]['communication_medicine_improvement_points'],$hcahps_array[0]['communication_medicine_dimension_score']];
+		
+		$csv['cleanliness'] = [$hcahps_array[0]['cleanliness_achievement_threshold'], $hcahps_array[0]['cleanliness_benchmark'],$hcahps_array[0]['cleanliness_baseline'],$hcahps_array[0]['cleanliness_performace'],$hcahps_array[0]['cleanliness_achievement_points'],$hcahps_array[0]['cleanliness_improvement_points'],$hcahps_array[0]['cleanliness_dimension_score']];
+		
+		$csv['discharge'] = [$hcahps_array[0]['discharge_achievement_threshold'], $hcahps_array[0]['discharge_benchmark'],$hcahps_array[0]['discharge_baseline'],$hcahps_array[0]['discharge_performace'],$hcahps_array[0]['discharge_achievement_points'],$hcahps_array[0]['discharge_improvement_points'],$hcahps_array[0]['discharge_dimension_score']];
+		
+		$csv['overall'] = [$hcahps_array[0]['overall_achievement_threshold'], $hcahps_array[0]['overall_benchmark'],$hcahps_array[0]['overall_baseline'],$hcahps_array[0]['overall_performace'],$hcahps_array[0]['overall_achievement_points'],$hcahps_array[0]['overall_improvement_points'],$hcahps_array[0]['overall_dimension_score']];
+		
+		$csv['hcahps_tps'] = [$hcahps_array[0]['hcahps_base_score'], $tps_array[0]['unweighted_patient_caregiver_experience'], $tps_array[0]['weighted_patient_caregiver_experience']];
+		
+		$csv['tps'] = [$tps_array[0]['total_performance_score']];
+		
+		$csv['hcahps_consistency'] = [$hcahps_array[0]['hcahps_consistency_score']];
 		
 		$csv['hcahps_floor_data'] = [$hcahps[0]['communication_nurses_floor'], $hcahps[0]['communication_doctors_floor'], $hcahps[0]['responsiveness_floor'], $hcahps[0]['care_transition_floor'], $hcahps[0]['communication_medicine_floor'], $hcahps[0]['cleanliness_floor'], $hcahps[0]['discharge_floor'], $hcahps[0]['overall_floor']];
 		
@@ -114,9 +114,6 @@ class Vbp extends \Model {
 		$total_reimbursement = $reim - $penalty + $money_back;
 		
 		$csv['reimbursement'] = [$reim, $penalty, $total_reimbursement];
-		
-		$csv['test'] = fgetcsv($file, 1000, ",");
-		$csv['comments'] = fgetcsv($file, 1000, ",");
 
 		return $csv;
 	}
