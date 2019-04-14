@@ -10,14 +10,27 @@ echo Form::open(array('action' => 'index.php/m3/vbp_modeling', 'method' => 'post
 $prov_nums_array = array();
 $prov_nums = \DB::select('provider_number')->from('test_safety')->execute();
 $prov_nums_array = $prov_nums->as_array();
-echo Form::select('provider_num', 'none', $prov_nums_array);
-$prov_num = Form::select('provider_number', 'none', $prov_nums_array);
-echo '<br><br>';
-echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn btn-default'));
-    ?>	
+?>
+<select name="formPN">
+	<?php
+	foreach ($prov_nums_array as $pn){
+		foreach($pn as $data){
+			echo "<option value='$data'>$data</option>" ;
+		} 
+	}
+	?>
+</select>	
 
-    <?php echo $hospital_name[0] ?>
-
+    <?php 
+    if(isset($_POST['formSumbit'])){
+		$provNum = $_POST['formPN'];
+		echo $provNum;
+	}
+	
+	echo Form::input('pNum');
+	echo Form::button('provNum', 'Type in a number from dropdown', array('class' => 'btn btn-default'));
+	echo '<br><br>';
+    echo $hospital_name[0] ?>
 
 <h2>Reimbursement</h2>
                     <table border="1">
