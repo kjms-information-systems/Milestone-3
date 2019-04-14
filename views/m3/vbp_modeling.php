@@ -18,6 +18,7 @@ echo Form::button('frmbutton', 'Select Provider Number', array('class' => 'btn b
 
     <?php echo $hospital_name[0] ?>
 
+
 <h2>Reimbursement</h2>
                     <table border="1">
                         <tr>
