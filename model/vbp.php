@@ -2,7 +2,7 @@
 namespace Model;
 class Vbp extends \Model {
 	public static function get_data($filename, $username) {
-        	$provider_number = $filename;
+      $provider_number = $filename;
 		//change $filename parameter to the provider_number
 		$safety = \DB::select('*')->from('test_safety')->where('provider_number', '=', $provider_number)->execute();
 		$tps = \DB::select('*')->from('test_TPS')->where('provider_number', '=', $provider_number)->execute();
@@ -296,6 +296,86 @@ class Vbp extends \Model {
             
 	}
 	
+	public static function get_saved_data($filename) {
+	
+		// TODO - implement username check
+		$user_data = \DB::select('*')->from('test_user_saved_data')->where('provider_number', '=', $provider_number  /*, ' AND ', 'username', '=', $username */)->execute();
+		
+		$user_array = array();
+		$user_array = $user_data->as_array();		
+
+		$out = array();
+		
+		//SAFETY
+		$out['psi90'] = [$user_array[0]['psi_90_achievement_threshold'], $user_array[0]['psi_90_benchmark'],$user_array[0]['psi_90_baseline_rate'],$user_array[0]['psi_90_performance_rate'],$user_array[0]['psi_90_achievement_points'],$user_array[0]['psi_90_improvement_points'],$user_array[0]['psi_90_measure_score']] ;
+		
+		$out['ha1'] = [$user_array[0]['hai_1_achievement_threshold'], $user_array[0]['hai_1_benchmark'],$user_array[0]['hai_1_baseline_rate'],$user_array[0]['hai_1_performance_rate'],$user_array[0]['hai_1_achievement_points'],$user_array[0]['hai_1_improvement_points'],$user_array[0]['hai_1_measure_score']] ;
+
+		$out['ha2'] = [$user_array[0]['hai_2_achievement_threshold'], $user_array[0]['hai_2_benchmark'],$user_array[0]['hai_2_baseline_rate'],$user_array[0]['hai_2_performance_rate'],$user_array[0]['hai_2_achievement_points'],$user_array[0]['hai_2_improvement_points'],$user_array[0]['hai_2_measure_score']] ;
+		
+		$out['ha3'] = [$user_array[0]['hai_3_achievement_threshold'], $user_array[0]['hai_3_benchmark'],$user_array[0]['hai_3_baseline_rate'],$user_array[0]['hai_3_performance_rate'],$user_array[0]['hai_3_achievement_points'],$user_array[0]['hai_3_improvement_points'],$user_array[0]['hai_3_measure_score']] ;
+		
+		$out['ha4'] = [$user_array[0]['hai_4_achievement_threshold'], $user_array[0]['hai_4_benchmark'],$user_array[0]['hai_4_baseline_rate'],$user_array[0]['hai_4_performance_rate'],$user_array[0]['hai_4_achievement_points'],$user_array[0]['hai_4_improvement_points'],$user_array[0]['hai_4_measure_score']] ;
+		
+		$out['ha5'] = [$user_array[0]['hai_5_achievement_threshold'], $user_array[0]['hai_5_benchmark'],$user_array[0]['hai_5_baseline_rate'],$user_array[0]['hai_5_performance_rate'],$user_array[0]['hai_5_achievement_points'],$user_array[0]['hai_5_improvement_points'],$user_array[0]['hai_5_measure_score']] ;
+		
+		$out['ha6'] = [$user_array[0]['hai_6_achievement_threshold'], $user_array[0]['hai_6_benchmark'],$user_array[0]['hai_6_baseline_rate'],$user_array[0]['hai_6_performance_rate'],$user_array[0]['hai_6_achievement_points'],$user_array[0]['hai_6_improvement_points'],$user_array[0]['hai_6_measure_score']] ;
+		
+		$out['pc01'] = [$user_array[0]['pc_01_achievement_threshold'], $user_array[0]['pc_01_benchmark'],$user_array[0]['pc_01_baseline_rate'],$user_array[0]['pc_01_performance_rate'],$user_array[0]['pc_01_achievement_points'],$user_array[0]['pc_01_improvement_points'],$user_array[0]['pc_01_measure_score']] ;
+		
+		$out['combined_ssi'] = [$user_array[0]['combined_ssi_measure_score']];
+		
+		$out['safety_tps'] = [$user_array[0]['unweighted_safety'], $user_array[0]['unweighted_safety'], $user_array[0]['weighted_safety']];
+		
+		//CLINICAL CARE
+		$out['mortAMI'] = [$user_array[0]['mort_30_ami_achievement_threshold'], $user_array[0]['mort_30_ami_benchmark'],$user_array[0]['mort_30_ami_baseline_rate'],$user_array[0]['mort_30_ami_performance_rate'],$user_array[0]['mort_30_ami_achievement_points'],$user_array[0]['mort_30_ami_improvement_points'],$user_array[0]['mort_30_ami_measure_score']] ;
+		
+		$out['mortHF'] = [$user_array[0]['mort_30_hf_achievement_threshold'], $user_array[0]['mort_30_hf_benchmark'],$user_array[0]['mort_30_hf_baseline_rate'],$user_array[0]['mort_30_hf_performance_rate'],$user_array[0]['mort_30_hf_achievement_points'],$user_array[0]['mort_30_hf_improvement_points'],$user_array[0]['mort_30_hf_measure_score']] ;
+		
+		$out['mortPN'] = [$user_array[0]['mort_30_pn_achievement_threshold'], $user_array[0]['mort_30_pn_benchmark'],$user_array[0]['mort_30_pn_baseline_rate'],$user_array[0]['mort_30_pn_performance_rate'],$user_array[0]['mort_30_pn_achievement_points'],$user_array[0]['mort_30_pn_improvement_points'],$user_array[0]['mort_30_pn_measure_score']] ;
+		
+		$out['cc_tps'] = [$user_array[0]['unweighted_clinical_care'], $user_array[0]['unweighted_clinical_care'], $user_array[0]['weighted_clinical_care']];
+		
+		$out['hospital_name'] = [$user_array[0]['hospital_name']];
+		
+		$out['provider_number'] = [$$user_array[0]['provider_number']]; 
+		
+		$out['MSPB'] = [$user_array[0]['mspb_1_achievement_threshold'], $user_array[0]['mspb_1_benchmark'],$user_array[0]['mspb_1_baseline_rate'],$user_array[0]['mspb_1_performance_rate'],$user_array[0]['mspb_1_achievement_points'],$user_array[0]['mspb_1_improvement_points'],$user_array[0]['mspb_1_measure_score']];
+		
+		$out['efficiency_tps'] = [$user_array[0]['unweighted_efficiency'], $user_array[0]['unweighted_efficiency'], $user_array[0]['weighted_efficiency']];
+		
+		$out['nurses'] = [$user_array[0]['communication_nurses_achievement_threshold'], $user_array[0]['communication_nurses_benchmark'],$user_array[0]['communication_nurses_baseline'],$user_array[0]['communication_nurses_performace'],$user_array[0]['communication_nurses_achievement_points'],$user_array[0]['communication_nurses_improvement_points'],$user_array[0]['communication_nurses_dimension_score']];
+		
+		$out['doctors'] = [$user_array[0]['communication_doctors_achievement_threshold'], $user_array[0]['communication_doctors_benchmark'],$user_array[0]['communication_doctors_baseline'],$user_array[0]['communication_doctors_performace'],$user_array[0]['communication_doctors_achievement_points'],$user_array[0]['communication_doctors_improvement_points'],$user_array[0]['communication_doctors_dimension_score']];
+		
+		$out['staff'] = [$user_array[0]['responsiveness_achievement_threshold'], $user_array[0]['responsiveness_benchmark'],$user_array[0]['responsiveness_baseline'],$user_array[0]['responsiveness_performace'],$user_array[0]['responsiveness_achievement_points'],$user_array[0]['responsiveness_improvement_points'],$user_array[0]['responsiveness_dimension_score']];
+		
+		$out['care'] = [$user_array[0]['care_transition_achievement_threshold'], $user_array[0]['care_transition_benchmark'],$user_array[0]['care_transition_baseline'],$user_array[0]['care_transition_performace'],$user_array[0]['care_transition_achievement_points'],$user_array[0]['care_transition_improvement_points'],$user_array[0]['care_transition_dimension_score']];
+		
+		$out['medicine'] = [$user_array[0]['communication_medicine_achievement_threshold'], $user_array[0]['communication_medicine_benchmark'],$user_array[0]['communication_medicine_baseline'],$user_array[0]['communication_medicine_performace'],$user_array[0]['communication_medicine_achievement_points'],$user_array[0]['communication_medicine_improvement_points'],$user_array[0]['communication_medicine_dimension_score']];
+		
+		$out['cleanliness'] = [$user_array[0]['cleanliness_achievement_threshold'], $user_array[0]['cleanliness_benchmark'],$user_array[0]['cleanliness_baseline'],$user_array[0]['cleanliness_performace'],$user_array[0]['cleanliness_achievement_points'],$user_array[0]['cleanliness_improvement_points'],$user_array[0]['cleanliness_dimension_score']];
+		
+		$out['discharge'] = [$user_array[0]['discharge_achievement_threshold'], $user_array[0]['discharge_benchmark'],$user_array[0]['discharge_baseline'],$user_array[0]['discharge_performace'],$user_array[0]['discharge_achievement_points'],$user_array[0]['discharge_improvement_points'],$user_array[0]['discharge_dimension_score']];
+		
+		$out['overall'] = [$user_array[0]['overall_achievement_threshold'], $user_array[0]['overall_benchmark'],$user_array[0]['overall_baseline'],$user_array[0]['overall_performace'],$user_array[0]['overall_achievement_points'],$user_array[0]['overall_improvement_points'],$user_array[0]['overall_dimension_score']];
+		
+		$out['hcahps_tps'] = [$user_array[0]['hcahps_base_score'], $user_array[0]['unweighted_patient_caregiver_experience'], $user_array[0]['weighted_patient_caregiver_experience']];
+		
+		$out['tps'] = [$user_array[0]['total_performance_score']];
+		
+		$out['hcahps_consistency'] = [$user_array[0]['hcahps_consistency_score']];
+		
+		$out['hcahps_floor_data'] = [$user_array[0]['communication_nurses_floor'], $user_array[0]['communication_doctors_floor'], $user_array[0]['responsiveness_floor'], $user_array[0]['care_transition_floor'], $user_array[0]['communication_medicine_floor'], $user_array[0]['cleanliness_floor'], $user_array[0]['discharge_floor'], $user_array[0]['overall_floor']];
+		
+		$out['reimbursement'] = [$user_array[0]['reimbursement'], $user_array[0]['penalty'], $user_array[0]['total_reimbursement']];
+		
+		// NOTE - $out includes comment info, where get_data does not 
+		$out['comments'] = [$user_array[0]['comments']];
+		
+		return $out;
+
+	}
 	
 	public static function calculate($achievement, $benchmark, $baseline, $performance){
 	
@@ -391,3 +471,4 @@ class Vbp extends \Model {
 	
 	}	
 }
+
