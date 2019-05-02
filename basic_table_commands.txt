@@ -81,5 +81,8 @@ create table test_user_saved_data (username VARCHAR(255) NOT NULL, filename VARC
 
 
 
+**Commands to create a table for comment data, yet to be implemented w/ Fuel - TESTED AND WORKS**
+
+create table comment_data(id VARCHAR(255) NOT NULL, parent_id VARCHAR(255) NOT NULL, author_username VARCHAR(255) NOT NULL, create_time VARCHAR(255) NOT NULL, edit_time VARCHAR(255) NOT NULL, ranking INT, deleted BOOLEAN);
 
 
