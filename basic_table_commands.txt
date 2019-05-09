@@ -85,6 +85,13 @@ create table test_user_saved_data (username VARCHAR(255) NOT NULL, filename VARC
 
 create table comment_data(id VARCHAR(255) NOT NULL, parent_id VARCHAR(255) NOT NULL, author_username VARCHAR(255) NOT NULL, comment VARCHAR(255), create_time DATETIME NOT NULL, edit_time DATETIME NOT NULL, ranking INT, deleted BOOLEAN);
 
+** Some sample values for the above table **
+
+INSERT INTO comment_data VALUES ('1', '0', 'ScooScoo', 'I love this feature!', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 10, 0); INSERT INTO comment_data VALUES ('2', '0', 'User 1555', 'I am not a goat', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 3, 0); INSERT INTO comment_data VALUES ('3', '0', 'probs a person', 'The book was better', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 8, 0); INSERT INTO comment_data VALUES ('4', '0', 'John', 'Somebody once told me...', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 2, 0); INSERT INTO comment_data VALUES ('5', '2', 'Doe', 'yeah thats tom brady', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 2, 0); INSERT INTO comment_data VALUES ('6', '2', 'ASMR', 'what does the goat say', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 3, 0); INSERT INTO comment_data VALUES ('7', '1', 'beth', 'I like it as well', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 0, 0); INSERT INTO comment_data VALUES ('8', '3', 'an individual', 'neat', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 6, 0); INSERT INTO comment_data VALUES ('9', '4', 'Smash Mouth', ‘that song is trash’, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 7, 0);
+
+
+
+
 
 **Commands to create a table for comment upvotes data, yet to be implemented w/ Fuel - TESTED AND WORKS**
 
